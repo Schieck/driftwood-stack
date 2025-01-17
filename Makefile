@@ -1,7 +1,7 @@
 
 # Create DB container
 docker-run:
-	@if docker compose -f ./infra/docker-compose.yml --env-file .env up --build 2>/dev/null; then \
+	@if docker compose -f ./infra/docker-compose.yml --env-file example.env up --build 2>/dev/null; then \
 		: ; \
 	else \
 		echo "Falling back to Docker Compose V1"; \
