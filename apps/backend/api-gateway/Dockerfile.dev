@@ -1,0 +1,15 @@
+FROM golang:latest as build
+
+RUN go install github.com/air-verse/air@latest
+
+WORKDIR /app
+
+COPY go.mod go.sum ./
+
+RUN go mod download
+
+RUN ls
+
+COPY . .
+
+CMD ["air"]

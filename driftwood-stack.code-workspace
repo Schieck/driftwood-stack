@@ -1,0 +1,63 @@
+{
+  "folders": [
+    {
+      "name": "🏠 Driftwood Stack",
+      "path": "."
+    },
+    {
+      "name": "🌐 External Web (Next.js)",
+      "path": "apps/frontend/dws-exposed-webapp"
+    },
+    {
+      "name": "🔒 Internal Web (React)",
+      "path": "apps/frontend/dws-internal-webapp"
+    },
+    {
+      "name": "⚡ API Gateway (Go)",
+      "path": "apps/backend/api-gateway"
+    },
+    {
+      "name": "🤖 ML Service (Python)",
+      "path": "apps/backend/ml-service"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "**/dist": true,
+      "**/.next": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.next": true,
+      "**/coverage": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      // General
+      "ms-vscode-remote.remote-containers",
+      "ms-azuretools.vscode-docker",
+      "eamodio.gitlens",
+      "github.copilot",
+
+      // Frontend
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss",
+      "dsznajder.es7-react-js-snippets",
+
+      // Backend
+      "golang.go",
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+
+      // Testing
+      "orta.vscode-jest",
+      "ms-vscode.test-adapter-converter"
+    ]
+  }
+}

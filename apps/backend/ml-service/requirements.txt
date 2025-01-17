@@ -1,0 +1,26 @@
+# Core framework
+fastapi
+
+# Server
+uvicorn[standard]
+
+# Data validation
+pydantic
+
+# ML and utilities
+numpy
+scikit-learn
+langchain
+langchain-openai
+langchain_huggingface
+
+# Logging
+loguru
+
+# Testing
+pytest
+httpx
+
+# Optional (development utilities)
+ipython
+python-dotenv

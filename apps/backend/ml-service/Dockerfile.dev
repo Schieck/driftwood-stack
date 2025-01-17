@@ -1,0 +1,23 @@
+FROM python:3.10-slim
+
+# Env variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    LOGURU_LEVEL=DEBUG
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# CP Files
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Service Port
+EXPOSE ${PORT}
+
+# Start the application with hot-reload enabled
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT} --reload

@@ -1,0 +1,83 @@
+version: "3.8"
+name: "dws_docker_infrastructure"
+services:
+  dws-exposed-webapp:
+    build:
+      context: ../apps/frontend/dws-exposed-webapp
+      dockerfile: ${DWS_EXT_WEBAPP_DOCKERFILE}
+    ports:
+      - "${DWS_EXT_WEBAPP_PORT}:${DWS_EXT_WEBAPP_PORT}"
+    volumes:
+      - ../apps/frontend/dws-exposed-webapp:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - PORT=${DWS_EXT_WEBAPP_PORT}
+
+  dws-internal-webapp:
+    build:
+      context: ../apps/frontend/dws-internal-webapp
+      dockerfile: ${DWS_INT_WEBAPP_DOCKERFILE}
+    ports:
+      - "${DWS_INT_WEBAPP_PORT}:${DWS_INT_WEBAPP_PORT}"
+    volumes:
+      - ../apps/frontend/dws-internal-webapp:/app
+      - /app/node_modules
+    environment:
+      - PORT=${DWS_INT_WEBAPP_PORT}
+      - CHOKIDAR_USEPOLLING=true
+
+  dws-api-gateway:
+    build:
+      context: ../apps/backend/api-gateway
+      dockerfile: ${DWS_GO_DOCKERFILE}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${DWS_GO_PORT}/health"]
+      interval: 60s
+      timeout: 10s
+      retries: 5
+    ports:
+      - "${DWS_GO_PORT}:${DWS_GO_PORT}"
+    volumes:
+      - ../apps/backend/api-gateway:/app
+    environment:
+      - ENV=${DWS_GO_ENV}
+      - PORT=${DWS_GO_PORT}
+      - DB_HOST=${DWS_DB_HOST}
+      - DB_PORT=${DWS_DB_PORT}
+      - DB_USERNAME=${DWS_DB_USERNAME}
+      - DB_PASSWORD=${DWS_DB_ROOT_PASSWORD}
+    depends_on:
+      - dws_mongodb
+      - dws-ml-service
+
+  dws-ml-service:
+    build:
+      context: ../apps/backend/ml-service
+      dockerfile: ${DWS_ML_DOCKERFILE}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${DWS_ML_PORT}/health"]
+      interval: 60s
+      timeout: 10s
+      retries: 5
+    ports:
+      - "${DWS_ML_PORT}:${DWS_ML_PORT}"
+    volumes:
+      - ../apps/backend/ml-service:/app
+    environment:
+      - PYTHON_ENV=${DWS_ML_ENV}
+      - PORT=${DWS_ML_PORT}
+
+  dws_mongodb:
+    image: mongo:latest
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DWS_DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DWS_DB_ROOT_PASSWORD}
+    ports:
+      - ${DWS_DB_PORTS}
+    volumes:
+      - mongo_volume_dws:/data/db
+
+volumes:
+  mongo_volume_dws:
