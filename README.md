@@ -38,7 +38,7 @@ A production-ready, developer-friendly monorepo stack designed for rapid develop
 - [x] Infrastructure Setup
 - [x] Basic Backend Setup (Go & Python, especially for AI implementations)
 - [x] Basic Frontend Setup
-- [ ] Make to rename for the new entire project
+- [x] Makefile to rename for the new entire project
 - [ ] Finish first version of the component generator
 - [ ] Adjust prompts for better results
 - [ ] Implement CI/CD with artifacts ready for deploy
