@@ -5,6 +5,7 @@
 
 # Temp Folders
 /tmp/
+/__pycache__/
 
 # Code Generator Keys
 .driftwood-generator-config.toml

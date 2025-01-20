@@ -33,6 +33,8 @@ help:
 	@echo "      project=<project>     - Project type (exposed-webapp, internal-webapp, dws-api-gateway, dws-ml-service)"
 	@echo "      level=<level>         - Component level (atom, molecule, organism, template, page, service, model)"
 	@echo "      name=<name>           - Component name"
+	@echo "  install-env-deps    Install dependencies in all subfolders"
+	@echo "  clean-env-deps      Remove node_modules and pnpm lock files in all subfolders"
 	@echo ""
 	@echo "$(CYAN)Examples:$(RESET)"
 	@echo "  make setup project_name=your-project-name project_alias=ypa"

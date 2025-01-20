@@ -1,3 +1,5 @@
+include tools/prepareenv.mk
+
 # ==========================================
 # Project Setup and Renaming
 # ==========================================
@@ -24,6 +26,7 @@ endef
 
 .PHONY: setup
 setup: ## Initialize project with new name (Usage: make setup project_name=new-name project_alias=alias)
+	install-env-deps
 	$(call validate_setup_input)
 	@echo "$(SETUP_BLUE)Setting up project with name: $(project_name) (alias: $(project_alias))$(SETUP_NC)"
 	@$(MAKE) setup-frontend
