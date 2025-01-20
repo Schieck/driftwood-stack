@@ -1,0 +1,26 @@
+from fastapi import APIRouter, HTTPException, Depends
+from pydantic import BaseModel
+from typing import Optional
+from loguru import logger
+
+router = APIRouter(tags=["{{ name }}"])
+
+class {{ name }}Request(BaseModel):
+    # TODO: Define request model
+    pass
+
+class {{ name }}Response(BaseModel):
+    # TODO: Define response model
+    pass
+
+@router.post("/{{ name.lower() }}", response_model={{ name }}Response)
+async def process_{{ name.lower() }}(request: {{ name }}Request):
+    """
+    Process {{ name }} request
+    """
+    try:
+        # TODO: Implement service logic
+        pass
+    except Exception as e:
+        logger.error(f"Error in {{ name }}: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))

@@ -1,0 +1,22 @@
+import React from 'react';
+import { type {{ name }}Props } from './types';
+
+/**
+ * {{ name }} component - {{ level }} level component
+ *
+ * @component
+ * @example
+ * ```tsx
+ * <{{ name }} />
+ * ```
+ */
+export const {{ name }}: React.FC<{{ name }}Props> = () => {
+  return (
+    <div className="p-4">
+      <h2 className="text-lg font-semibold">{{ name }}</h2>
+      {/* Add your component content here */}
+    </div>
+  );
+};
+
+export default {{ name }};

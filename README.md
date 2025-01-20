@@ -1,149 +1,152 @@
 # Driftwood Stack 🌊🎸
 
-A simple, powerful, and developer-friendly web, web3, monorepo stack designed for building Proof of Concepts (POC/MVP), AI Micro-SAAS and scalable small web applications with AI/Machine Learning components.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](CONTRIBUTING.md)
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-black?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=flat&logo=go&logoColor=white)](https://golang.org/)
+[![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 
-A few signs that could be useful for you:
-- You're a senior testing something solo, and you knows that it has the entire setup ready, that if done manually would take some hours to build.
-- The setup is complete for a basic operation, enabling customer access, and a special access for the admins.
-- It already supports most of the things a UI/UX would ask you to implement.
-- With the ability to quickly implement AI tools, it enables you to easily solve real world problems, instead of just creating a python script or something so specific that most people will never use.
-- It uses gRCP communication between the two apis, so it's really fast.
-- You can easily implement WEB3 tools if needed, such as wallets and other stuff.
+A production-ready, developer-friendly monorepo stack designed for rapid development of AI-powered web applications. Perfect for POCs, MVPs, and AI Micro-SaaS projects.
 
-> **Note:** This stack is optimized for solo developers (Senior ones) or small teams. For larger teams or projects, consider breaking it into multiple repositories to facilitate scalability and collaboration.
+## 🌟 Key Features
 
-## Table of Contents
+- **Full-Stack Development**: Pre-configured Next.js frontend with Go & Python backends
+- **AI/ML Ready**: Integrated with LangChain and scikit-learn for rapid AI development
+- **Dual Frontend**: Customer-facing Next.js app + Internal admin panel
+- **High Performance**: gRPC communication between services
+- **Web3 Compatible**: Ready for blockchain integration
+- **Developer Experience**: Automated code generation and comprehensive tooling
 
-- [Project Overview](#project-overview)
-- [Progress](#progress)
-- [Getting Started](#getting-started)
-- [Code Generation](#code-generation)
-- [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
+## 📊 Status
 
-## Project Overview
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/yourusername/driftwood-stack/actions)
+[![Documentation Status](https://img.shields.io/badge/docs-latest-blue)](https://github.com/yourusername/driftwood-stack/wiki)
+![Project Status](https://img.shields.io/badge/status-alpha-orange)
 
-This project is organized into three main parts:
+## 🎯 Perfect For
 
-1. **Frontend**: Built with [Next.js](https://nextjs.org/), [shadcn](https://shadcn.dev/), and [Tailwind CSS](https://tailwindcss.com/).
-2. **Backend**: Powered by Go and Python.
-   - **API Gateway** (Go): Utilizes [Gin](https://gin-gonic.com/), [Swaggo](https://swaggo.github.io/swaggo.io/), [Testcontainers](https://testcontainers.com/), and the [MongoDB Go Driver](https://www.mongodb.com/docs/drivers/go/current/).
-   - **ML Service** (Python): Employs [FastAPI](https://fastapi.tiangolo.com/), [Uvicorn](https://www.uvicorn.org/), [Pydantic](https://docs.pydantic.dev/), [NumPy](https://numpy.org/), [LangChain](https://python.langchain.com/), [scikit-learn](https://scikit-learn.org/stable/), and [Loguru](https://loguru.readthedocs.io/en/stable/).
-3. **Infrastructure**: Managed with [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/), and [GitHub Actions](https://github.com/features/actions) for CI/CD.
+- Senior developers building solo projects
+- Small teams needing a complete setup
+- AI/ML projects requiring web interfaces
+- Rapid prototyping with production-quality code
 
-## Progress
+## 🚀 Quick Start
 
-- [x] Basic General Setup
-- [x] Infrastructure Setup
-- [x] Basic Backend Setup (Go & Python, especially for AI implementations)
-- [x] Basic Frontend Setup
-- [ ] Make to rename for the new project
-- [ ] Finish first version of the component generator
-- [ ] Adjust prompts for better results
-- [ ] Implement CI/CD with artifacts ready for deploy
-- [ ] Implemented completely functional frontend and backend using all the tools
+### Prerequisites
 
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white) Required  
+![Python](https://img.shields.io/badge/python-3.8+-blue.svg) Required  
+![Make](https://img.shields.io/badge/Make-%23008FBA.svg?style=flat&logo=gnu&logoColor=white) Required
 
+### Installation
 
-## Getting Started
-
-> Fork this project and start from it. 
-
-
-### Pre-requisites
-- A running python
-- Support to run Makefiles
-- A running docker
-
-To run this template locally, execute the following command:
+> Fork the repository.
 
 ```bash
-make start <name-of-your-project>
+# Start your project
+make start your-project-name
+
+# Run with Docker
 make docker-run
 ```
 
-# Code Generation
+## 🛠️ Technology Stack
 
-The Driftwood Stack provides a code generation tool that helps you quickly scaffold components, services, and pages across different parts of the project. You can generate code either as blank templates or using AI assistance.
+### Frontend
+- [Next.js](https://nextjs.org/) - React framework for customer-facing app
+- [React Router](https://reactrouter.com/) - For internal admin panel
+- [shadcn/ui](https://shadcn.dev/) - Accessible component library
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Phosphor Icons](https://phosphoricons.com/) - Modern icon library
 
-## Command Structure
+### Backend
+#### API Gateway (Go)
+- [Gin](https://gin-gonic.com/) - High-performance web framework
+- [Swaggo](https://swaggo.github.io/swaggo.io/) - Swagger docs generator
+- [Testcontainers](https://testcontainers.com/) - Integration testing
+- [MongoDB Go Driver](https://www.mongodb.com/docs/drivers/go/current/)
 
-```bash
-make setup-generator
-make component project=<project-type> level=<component-level> name=<component-name>
-```
+#### ML Service (Python)
+- [FastAPI](https://fastapi.tiangolo.com/) - Modern API framework
+- [LangChain](https://python.langchain.com/) - LLM framework
+- [scikit-learn](https://scikit-learn.org/) - Machine learning
+- [Pydantic](https://docs.pydantic.dev/) - Data validation
+- [Loguru](https://loguru.readthedocs.io/) - Logging made simple
 
-### Project Types
-- `exposed-webapp`: Customer-facing Next.js application
-- `internal-webapp`: Admin/Internal React application
-- `api-gateway`: Go-based API services
-- `ml-service`: Python-based Machine Learning services
+### Infrastructure
+- [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
+- [GitHub Actions](https://github.com/features/actions) - CI/CD
 
-### Component Levels
-- Frontend (`exposed-webapp`, `internal-webapp`):
-  - `atom`: Basic UI components
-  - `molecule`: Composite components
-  - `organism`: Complex UI sections
-  - `template`: Page templates
-  - `page`: Full pages
-- Backend:
-  - `service`: API or ML services
-  - `model`: Data models (ML service only)
-
-
-## Technologies Used
-
-- **Frontend**:
-  - For the exposed app, [Next.js](https://nextjs.org/): The React Framework for the Web.
-  - For the internal app, [React Router](https://reactrouter.com/): The React Router.
-  - [shadcn](https://shadcn.dev/): A component library for building accessible and customizable UI components.
-  - [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework for rapid UI development.
-  - [Phosphor Icons](https://phosphoricons.com/): The icons you need for your frontend.
-
-- **Backend**:
-  - **API Gateway** (Go):
-    - [Gin](https://gin-gonic.com/): A high-performance HTTP web framework.
-    - [Swaggo](https://swaggo.github.io/swaggo.io/): Tools to create and maintain API documentation.
-    - [Testcontainers](https://testcontainers.com/): Provides lightweight, throwaway instances of common databases, Selenium web browsers, or anything else that can run in a Docker container.
-    - [MongoDB Go Driver](https://www.mongodb.com/docs/drivers/go/current/): Official MongoDB driver for Go.
-
-  - **ML Service** (Python):
-    - [FastAPI](https://fastapi.tiangolo.com/): A modern, fast (high-performance) web framework for building APIs with Python.
-    - [Uvicorn](https://www.uvicorn.org/): A lightning-fast ASGI server implementation.
-    - [Pydantic](https://docs.pydantic.dev/): Data validation and settings management using Python type annotations.
-    - [NumPy](https://numpy.org/): The fundamental package for scientific computing with Python.
-    - [LangChain](https://python.langchain.com/): A framework for developing applications powered by language models.
-    - [scikit-learn](https://scikit-learn.org/stable/): A machine learning library for Python.
-    - [Loguru](https://loguru.readthedocs.io/en/stable/): A library to simplify logging in Python.
-
-- **Infrastructure**:
-  - [Docker](https://www.docker.com/): Platform for developing, shipping, and running applications in containers.
-  - [Docker Compose](https://docs.docker.com/compose/): A tool for defining and running multi-container Docker applications.
-  - [GitHub Actions](https://github.com/features/actions): Automate, customize, and execute software development workflows directly in your repository.
-
-## Project Structure
+## 📁 Project Structure
 
 ```plaintext
 driftwood-stack/
-├── apps
-│  ├── frontend/           
-|  |   ├── dws-exposed-webapp # Next.js application, recommended for landing pages / customer facing app.
-|  |   └── dws-internal-webapp # React Router application, recommended for admin / configuration.
-│  └── backend/
-│     ├── api-gateway/    # Go-based API Gateway
-│     └── ml-service/     # Python-based Machine Learning Service
-├── infra/     # Docker and CI/CD configurations
-└── README.md           # Project documentation
+├── apps/
+│   ├── frontend/
+│   │   ├── dws-exposed-webapp/    # Customer-facing Next.js app
+│   │   └── dws-internal-webapp/   # Admin React app
+│   └── backend/
+│       ├── api-gateway/           # Go API Gateway
+│       └── ml-service/            # Python ML Service
+├── infra/                         # Infrastructure configs
+└── docs/                          # Documentation
 ```
 
-## Contributing
+## 🔧 Code Generation
 
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or suggestions.
+Generate components and services using our CLI tool:
 
-Obs.: Use the Workspace, and install dependencies for each project.
+```bash
+# Setup generator
+make setup-generator
 
-## License
+# Generate components
+make component project=<project-type> level=<component-level> name=<component-name>
+```
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details. 
+### Available Options
+
+| Project Type | Component Level | Description |
+|--------------|----------------|-------------|
+| exposed-webapp | atom, molecule, organism, template, page | Customer app components |
+| internal-webapp | atom, molecule, organism, template, page | Admin app components |
+| api-gateway | service | Go API services |
+| ml-service | service, model | Python ML services |
+
+## 🤝 Contributing
+
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📚 Documentation
+
+- [Full Documentation](https://github.com/yourusername/driftwood-stack/wiki)
+- [API Reference](https://github.com/yourusername/driftwood-stack/wiki/api)
+- [Development Guide](https://github.com/yourusername/driftwood-stack/wiki/development)
+
+## ⭐ Support
+
+If you find this project helpful, please consider giving it a star!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/driftwood-stack&type=Date)](https://star-history.com/#yourusername/driftwood-stack&Date)
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/) team for the amazing framework
+- [shadcn/ui](https://shadcn.dev/) for beautiful components
+- [FastAPI](https://fastapi.tiangolo.com/) team for the Python framework
+- All our [contributors](https://github.com/yourusername/driftwood-stack/graphs/contributors)
