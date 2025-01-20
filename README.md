@@ -1,6 +1,14 @@
 # Driftwood Stack 🌊🎸
 
-A simple, powerful, and developer-friendly monorepo stack designed for building Proof of Concepts (POC/MVP), AI Micro-SAAS and scalable small web applications with AI/Machine Learning components.
+A simple, powerful, and developer-friendly web, web3, monorepo stack designed for building Proof of Concepts (POC/MVP), AI Micro-SAAS and scalable small web applications with AI/Machine Learning components.
+
+A few signs that could be useful for you:
+- You're a senior testing something solo, and you knows that it has the entire setup ready, that if done manually would take some hours to build.
+- The setup is complete for a basic operation, enabling customer access, and a special access for the admins.
+- It already supports most of the things a UI/UX would ask you to implement.
+- With the ability to quickly implement AI tools, it enables you to easily solve real world problems, instead of just creating a python script or something so specific that most people will never use.
+- It uses gRCP communication between the two apis, so it's really fast.
+- You can easily implement WEB3 tools if needed, such as wallets and other stuff.
 
 > **Note:** This stack is optimized for solo developers (Senior ones) or small teams. For larger teams or projects, consider breaking it into multiple repositories to facilitate scalability and collaboration.
 
@@ -9,6 +17,7 @@ A simple, powerful, and developer-friendly monorepo stack designed for building 
 - [Project Overview](#project-overview)
 - [Progress](#progress)
 - [Getting Started](#getting-started)
+- [Code Generation](#code-generation)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
@@ -30,24 +39,68 @@ This project is organized into three main parts:
 - [x] Infrastructure Setup
 - [x] Basic Backend Setup (Go & Python, especially for AI implementations)
 - [x] Basic Frontend Setup
-- [ ] Implemented completely functional frontend and backend.
+- [ ] Make to rename for the new project
+- [ ] Finish first version of the component generator
+- [ ] Adjust prompts for better results
+- [ ] Implement CI/CD with artifacts ready for deploy
+- [ ] Implemented completely functional frontend and backend using all the tools
 
 
 
 ## Getting Started
 
+> Fork this project and start from it. 
+
+
+### Pre-requisites
+- A running python
+- Support to run Makefiles
+- A running docker
+
 To run this template locally, execute the following command:
 
 ```bash
+make start <name-of-your-project>
 make docker-run
 ```
+
+# Code Generation
+
+The Driftwood Stack provides a code generation tool that helps you quickly scaffold components, services, and pages across different parts of the project. You can generate code either as blank templates or using AI assistance.
+
+## Command Structure
+
+```bash
+make setup-generator
+make component project=<project-type> level=<component-level> name=<component-name>
+```
+
+### Project Types
+- `exposed-webapp`: Customer-facing Next.js application
+- `internal-webapp`: Admin/Internal React application
+- `api-gateway`: Go-based API services
+- `ml-service`: Python-based Machine Learning services
+
+### Component Levels
+- Frontend (`exposed-webapp`, `internal-webapp`):
+  - `atom`: Basic UI components
+  - `molecule`: Composite components
+  - `organism`: Complex UI sections
+  - `template`: Page templates
+  - `page`: Full pages
+- Backend:
+  - `service`: API or ML services
+  - `model`: Data models (ML service only)
+
 
 ## Technologies Used
 
 - **Frontend**:
-  - [Next.js](https://nextjs.org/): The React Framework for the Web.
+  - For the exposed app, [Next.js](https://nextjs.org/): The React Framework for the Web.
+  - For the internal app, [React Router](https://reactrouter.com/): The React Router.
   - [shadcn](https://shadcn.dev/): A component library for building accessible and customizable UI components.
   - [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework for rapid UI development.
+  - [Phosphor Icons](https://phosphoricons.com/): The icons you need for your frontend.
 
 - **Backend**:
   - **API Gateway** (Go):
@@ -74,11 +127,14 @@ make docker-run
 
 ```plaintext
 driftwood-stack/
-├── frontend/           # Next.js application
-├── backend/
-│   ├── api-gateway/    # Go-based API Gateway
-│   └── ml-service/     # Python-based Machine Learning Service
-├── infrastructure/     # Docker and CI/CD configurations
+├── apps
+│  ├── frontend/           
+|  |   ├── dws-exposed-webapp # Next.js application, recommended for landing pages / customer facing app.
+|  |   └── dws-internal-webapp # React Router application, recommended for admin / configuration.
+│  └── backend/
+│     ├── api-gateway/    # Go-based API Gateway
+│     └── ml-service/     # Python-based Machine Learning Service
+├── infra/     # Docker and CI/CD configurations
 └── README.md           # Project documentation
 ```
 

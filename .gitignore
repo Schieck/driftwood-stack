@@ -6,4 +6,10 @@
 # Temp Folders
 /tmp/
 
+# Code Generator Keys
+.driftwood-generator-config.toml
+
+# Python generated file
+.venv
+
 # ~!~ General

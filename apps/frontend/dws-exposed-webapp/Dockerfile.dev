@@ -13,7 +13,7 @@ RUN npm i -g pnpm
 RUN pnpm install
 
 # Copy the rest of the application code
-COPY . .
+COPY * .
 
 EXPOSE ${DWS_EXT_WEBAPP_PORT}
 

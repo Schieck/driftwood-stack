@@ -1,4 +1,3 @@
-version: "3.8"
 name: "dws_docker_infrastructure"
 services:
   dws-exposed-webapp:
