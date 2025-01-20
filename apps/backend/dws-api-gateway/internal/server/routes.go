@@ -1,7 +1,7 @@
 package server
 
 import (
-	_ "api-gateway/cmd/api/docs"
+	_ "dws-api-gateway/cmd/api/docs"
 
 	"net/http"
 

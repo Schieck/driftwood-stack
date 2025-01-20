@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"api-gateway/internal/server"
+	"dws-api-gateway/internal/server"
 )
 
 func gracefulShutdown(apiServer *http.Server, done chan bool) {

@@ -1,4 +1,4 @@
-module api-gateway
+module dws-api-gateway
 
 go 1.23.4
 

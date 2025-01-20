@@ -1,4 +1,4 @@
-# Project api-gateway
+# Project dws-api-gateway
 
 One Paragraph of project description goes here
 

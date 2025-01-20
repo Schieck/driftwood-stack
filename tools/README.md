@@ -11,8 +11,8 @@ make component project=<project-type> level=<component-level> name=<component-na
 ### Project Types
 - `exposed-webapp`: Customer-facing Next.js application
 - `internal-webapp`: Admin/Internal React application
-- `api-gateway`: Go-based API services
-- `ml-service`: Python-based Machine Learning services
+- `dws-api-gateway`: Go-based API services
+- `dws-ml-service`: Python-based Machine Learning services
 
 ### Component Levels
 - Frontend (`exposed-webapp`, `internal-webapp`):
@@ -253,7 +253,7 @@ export default AnalyticsDashboard
 ### 3. Go API Service
 
 ```bash
-make component project=api-gateway level=service name=UserAuthService
+make component project=dws-api-gateway level=service name=UserAuthService
 ```
 
 With AI Generation description "Authentication service handling user login, registration, and token management":
@@ -400,7 +400,7 @@ func (s *UserAuthService) generateToken(userID string) (string, int64, error) {
 ### 4. Python ML Service
 
 ```bash
-make component project=ml-service level=service name=TextClassifier
+make component project=dws-ml-service level=service name=TextClassifier
 ```
 
 With AI Generation description "A text classification service using a pre-trained model to categorize text into predefined categories":

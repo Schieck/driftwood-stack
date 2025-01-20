@@ -9,7 +9,7 @@ import (
 
 	_ "github.com/joho/godotenv/autoload"
 
-	"api-gateway/internal/database"
+	"dws-api-gateway/internal/database"
 )
 
 type Server struct {

@@ -101,8 +101,8 @@ driftwood-stack/
 │   │   ├── dws-exposed-webapp/    # Customer-facing Next.js app
 │   │   └── dws-internal-webapp/   # Admin React app
 │   └── backend/
-│       ├── api-gateway/           # Go API Gateway
-│       └── ml-service/            # Python ML Service
+│       ├── dws-api-gateway/           # Go API Gateway
+│       └── dws-ml-service/            # Python ML Service
 ├── infra/                         # Infrastructure configs
 └── docs/                          # Documentation
 ```
@@ -125,8 +125,8 @@ make component project=<project-type> level=<component-level> name=<component-na
 |--------------|----------------|-------------|
 | exposed-webapp | atom, molecule, organism, template, page | Customer app components |
 | internal-webapp | atom, molecule, organism, template, page | Admin app components |
-| api-gateway | service | Go API services |
-| ml-service | service, model | Python ML services |
+| dws-api-gateway | service | Go API services |
+| dws-ml-service | service, model | Python ML services |
 
 ## 🤝 Contributing
 

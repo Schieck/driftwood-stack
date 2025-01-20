@@ -3,8 +3,8 @@ from enum import Enum
 class Project(str, Enum):
     EXPOSED_WEBAPP = "exposed-webapp"
     INTERNAL_WEBAPP = "internal-webapp"
-    API_GATEWAY = "api-gateway"
-    ML_SERVICE = "ml-service"
+    API_GATEWAY = "dws-api-gateway"
+    ML_SERVICE = "dws-ml-service"
 
 class Level(str, Enum):
     ATOM = "atom"

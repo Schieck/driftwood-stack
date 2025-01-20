@@ -26,19 +26,19 @@ services:
       - PORT=${DWS_INT_WEBAPP_PORT}
       - CHOKIDAR_USEPOLLING=true
 
-  dws-api-gateway:
+  dws-dws-api-gateway:
     build:
-      context: ../apps/backend/api-gateway
+      context: ../apps/backend/dws-api-gateway
       dockerfile: ${DWS_GO_DOCKERFILE}
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:${DWS_GO_PORT}/health"]
+      test: [ "CMD", "curl", "-f", "http://localhost:${DWS_GO_PORT}/health" ]
       interval: 60s
       timeout: 10s
       retries: 5
     ports:
       - "${DWS_GO_PORT}:${DWS_GO_PORT}"
     volumes:
-      - ../apps/backend/api-gateway:/app
+      - ../apps/backend/dws-api-gateway:/app
     environment:
       - ENV=${DWS_GO_ENV}
       - PORT=${DWS_GO_PORT}
@@ -48,21 +48,21 @@ services:
       - DB_PASSWORD=${DWS_DB_ROOT_PASSWORD}
     depends_on:
       - dws_mongodb
-      - dws-ml-service
+      - dws-dws-ml-service
 
-  dws-ml-service:
+  dws-dws-ml-service:
     build:
-      context: ../apps/backend/ml-service
+      context: ../apps/backend/dws-ml-service
       dockerfile: ${DWS_ML_DOCKERFILE}
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:${DWS_ML_PORT}/health"]
+      test: [ "CMD", "curl", "-f", "http://localhost:${DWS_ML_PORT}/health" ]
       interval: 60s
       timeout: 10s
       retries: 5
     ports:
       - "${DWS_ML_PORT}:${DWS_ML_PORT}"
     volumes:
-      - ../apps/backend/ml-service:/app
+      - ../apps/backend/dws-ml-service:/app
     environment:
       - PYTHON_ENV=${DWS_ML_ENV}
       - PORT=${DWS_ML_PORT}

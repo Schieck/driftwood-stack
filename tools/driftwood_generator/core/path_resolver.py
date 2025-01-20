@@ -17,7 +17,7 @@ class PathResolver:
             return component_base / "components" / level.value 
 
         elif project == Project.API_GATEWAY:
-            return self.base_path / "backend" / "api-gateway" / "internal" / "services"
+            return self.base_path / "backend" / "dws-api-gateway" / "internal" / "services"
             
         elif project == Project.ML_SERVICE:
-            return self.base_path / "backend" / "ml-service" / "app" / "services"
+            return self.base_path / "backend" / "dws-ml-service" / "app" / "services"

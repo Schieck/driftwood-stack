@@ -14,11 +14,11 @@
     },
     {
       "name": "⚡ API Gateway (Go)",
-      "path": "apps/backend/api-gateway"
+      "path": "apps/backend/dws-api-gateway"
     },
     {
       "name": "🤖 ML Service (Python)",
-      "path": "apps/backend/ml-service"
+      "path": "apps/backend/dws-ml-service"
     }
   ],
   "settings": {

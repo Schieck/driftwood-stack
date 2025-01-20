@@ -30,7 +30,7 @@ help:
 	@echo "  make docker-run           - Create a Docker container for the database"
 	@echo "  make component            - Generate a new component (Setup generator before running)"
 	@echo "    Required parameters:"
-	@echo "      project=<project>     - Project type (exposed-webapp, internal-webapp, api-gateway, ml-service)"
+	@echo "      project=<project>     - Project type (exposed-webapp, internal-webapp, dws-api-gateway, dws-ml-service)"
 	@echo "      level=<level>         - Component level (atom, molecule, organism, template, page, service, model)"
 	@echo "      name=<name>           - Component name"
 	@echo ""
