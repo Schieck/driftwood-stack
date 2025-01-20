@@ -33,6 +33,18 @@ A production-ready, developer-friendly monorepo stack designed for rapid develop
 - AI/ML projects requiring web interfaces
 - Rapid prototyping with production-quality code
 
+## ⚠️ WIP! - Progress
+- [x] Basic General Setup
+- [x] Infrastructure Setup
+- [x] Basic Backend Setup (Go & Python, especially for AI implementations)
+- [x] Basic Frontend Setup
+- [ ] Make to rename for the new project
+- [ ] Finish first version of the component generator
+- [ ] Adjust prompts for better results
+- [ ] Implement CI/CD with artifacts ready for deploy
+- [ ] Implemented completely functional frontend and backend using all the tools
+
+
 ## 🚀 Quick Start
 
 ### Prerequisites
