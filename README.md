@@ -142,7 +142,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you find this project helpful, please consider giving it a star!
 
-[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/driftwood-stack&type=Date)](https://star-history.com/#yourusername/driftwood-stack&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=Schieck/driftwood-stack&type=Date)](https://star-history.com/#yourusername/driftwood-stack&Date)
 
 ## 🙏 Acknowledgments
 
