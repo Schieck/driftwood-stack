@@ -11,6 +11,68 @@ Technical Requirements:
 - Include health checks
 - Follow ML service best practices
 
+My current strucuture:
+```
+./
+├── Dockerfile.dev
+├── app
+│   ├── core
+│   │   ├── config.py
+│   │   └── ml_model
+│   │       ├── ml_model.py
+│   │       └── test_ml_model.py
+│   ├── grpc_service
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-311.pyc
+│   │   │   ├── dws_ml_server_pb2.cpython-311.pyc
+│   │   │   ├── dws_ml_server_pb2_grpc.cpython-311.pyc
+│   │   │   └── grpc_server.cpython-311.pyc
+│   │   ├── dws_ml_server.proto
+│   │   ├── dws_ml_server_pb2.py
+│   │   ├── dws_ml_server_pb2_grpc.py
+│   │   └── grpc_server.py
+│   ├── main.py
+│   ├── requirements.txt
+│   ├── services
+│   │   └── search_service.py
+│   └── tests
+│       └── test_grpc.py
+└── scripts
+    └── training-data
+        ├── driftwood_dataset.csv
+        ├── generated_images
+        │   ...
+        └── images-from-csv.py
+```
+
+Packages I'm using:
+```
+# API and Server
+grpcio
+grpcio-tools
+protobuf
+
+# AI/LLM Tools
+langchain
+langchain-openai
+langchain_huggingface
+
+# Data Processing & ML
+numpy
+pandas
+scikit-learn
+torch
+pydantic
+
+# Development & Testing
+pytest
+python-dotenv
+
+# Logging
+loguru
+```
+
 Service Specifications:
 Details: {description}
 

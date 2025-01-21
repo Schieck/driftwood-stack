@@ -16,17 +16,18 @@ func (s *Server) RegisterRoutes() http.Handler {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:5173"}, // Add your frontend URL
+		AllowOrigins:     []string{"http://localhost:5173"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"},
 		AllowHeaders:     []string{"Accept", "Authorization", "Content-Type"},
-		AllowCredentials: true, // Enable cookies/auth
+		AllowCredentials: true, 
 	}))
 
 	r.GET("/", s.HelloWorldHandler)
 
 	r.GET("/health", s.healthHandler)
 
-	// Swagger UI route
+	r.POST("/search", s.searchHandler)
+
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return r
@@ -40,5 +41,29 @@ func (s *Server) HelloWorldHandler(c *gin.Context) {
 }
 
 func (s *Server) healthHandler(c *gin.Context) {
-	c.JSON(http.StatusOK, s.db.Health())
+	c.JSON(http.StatusOK, gin.H{
+		"db": s.db.Health(),
+		"ml": s.ml.Health(),
+	})
+}
+
+func (s *Server) searchHandler(c *gin.Context) {
+		var request struct {
+			Query                string            `json:"query"`
+			Filters              map[string]string `json:"filters"`
+			IncludeRecommendations bool             `json:"include_recommendations"`
+		}
+
+		if err := c.ShouldBindJSON(&request); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		response, err := s.ml.SearchDriftwood(request.Query, request.Filters, request.IncludeRecommendations)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch results", "details": err.Error()})
+			return
+		}
+
+		c.JSON(http.StatusOK, response)
 }

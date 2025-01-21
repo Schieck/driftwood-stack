@@ -26,7 +26,7 @@ services:
       - PORT=${DWS_INT_WEBAPP_PORT}
       - CHOKIDAR_USEPOLLING=true
 
-  dws-dws-api-gateway:
+  dws-api-gateway:
     build:
       context: ../apps/backend/dws-api-gateway
       dockerfile: ${DWS_GO_DOCKERFILE}
@@ -46,11 +46,15 @@ services:
       - DB_PORT=${DWS_DB_PORT}
       - DB_USERNAME=${DWS_DB_USERNAME}
       - DB_PASSWORD=${DWS_DB_ROOT_PASSWORD}
+      - ML_PORT=${DWS_ML_PORT}
+      - ML_HOST=${DWS_ML_HOST}
     depends_on:
       - dws_mongodb
-      - dws-dws-ml-service
+      - dws-ml-service
+    networks:
+      - dws-network
 
-  dws-dws-ml-service:
+  dws-ml-service:
     build:
       context: ../apps/backend/dws-ml-service
       dockerfile: ${DWS_ML_DOCKERFILE}
@@ -66,6 +70,12 @@ services:
     environment:
       - PYTHON_ENV=${DWS_ML_ENV}
       - PORT=${DWS_ML_PORT}
+      - DB_HOST=${DWS_DB_HOST}
+      - DB_PORT=${DWS_DB_PORT}
+      - DB_USERNAME=${DWS_DB_USERNAME}
+      - DB_PASSWORD=${DWS_DB_ROOT_PASSWORD}
+    networks:
+      - dws-network
 
   dws_mongodb:
     image: mongo:latest
@@ -77,6 +87,12 @@ services:
       - ${DWS_DB_PORTS}
     volumes:
       - mongo_volume_dws:/data/db
+    networks:
+      - dws-network
+
+networks:
+  dws-network:
+
 
 volumes:
   mongo_volume_dws:

@@ -1,0 +1,30 @@
+# API and Server
+grpcio
+grpcio-tools
+protobuf
+
+#DB
+pymongo
+
+# AI/LLM Tools
+transformers
+langchain
+langchain-openai
+langchain-huggingface
+langchain-community
+accelerate
+
+# Data Processing & ML
+numpy
+pandas
+scikit-learn
+torch
+pydantic
+pydantic_settings
+
+# Development & Testing
+pytest
+python-dotenv
+
+# Logging
+loguru

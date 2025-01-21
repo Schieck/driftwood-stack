@@ -55,6 +55,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        title: ["Libre Baskerville", "serif"],
       },
       keyframes: {
         "accordion-down": {

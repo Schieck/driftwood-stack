@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package dws;
+
+// Driftwood Search Service
+service DriftwoodSearchService {
+  rpc SearchDriftwood (SearchRequest) returns (SearchResponse);
+}
+
+// Messages for Search
+message SearchRequest {
+  string query = 1;                 // User's natural language query
+  map<string, string> filters = 2;  // Optional key-value filters
+  bool include_recommendations = 3; // Include recommendations in the response
+}
+
+message SearchResponse {
+  repeated DriftwoodItem results = 1;        // Ranked search results
+  repeated DriftwoodSummary recommendations = 2; // Context-aware recommendations
+}
+
+message DriftwoodItem {
+  string id = 1;
+  string image_path = 2;
+  DriftwoodMetadata metadata = 3;
+}
+
+message DriftwoodSummary {
+  string id = 1;
+  string image_path = 2;
+  string type = 3;
+  string location = 4;
+}
+
+message DriftwoodMetadata {
+  string type = 1;
+  double size = 2;
+  string color = 3;
+  string texture = 4;
+  string location = 5;
+  string weather_conditions = 6;
+  string coordinates = 7;
+  string dominant_species = 8;
+  double distance_to_water = 9;
+  string time_of_day = 10;
+  double temperature = 11;
+  double humidity = 12;
+}

@@ -27,12 +27,12 @@ console = Console(theme=Theme({
     "success": "green"
 }))
 
-def validate_name(name: str) -> bool:
+def validate_name(name: str, project: Project) -> bool:
     """Validate component name."""
     if not name.isidentifier():
         console.print("[error]Invalid component name. Please use a valid identifier.[/]")
         return False
-    if not name[0].isupper():
+    if project in [Project.EXPOSED_WEBAPP, Project.INTERNAL_WEBAPP] and not name[0].isupper():
         console.print("[error]Component name must start with an uppercase letter.[/]")
         return False
     return True
@@ -115,7 +115,7 @@ def generate_component(project: str, level: str, name: str, config: Optional[str
             settings.update_from_file(Path(config))
         
         # Validate component name
-        if not validate_name(name):
+        if not validate_name(name, project):
             return
         
         # Convert string inputs to enums

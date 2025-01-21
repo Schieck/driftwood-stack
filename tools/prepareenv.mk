@@ -6,9 +6,11 @@
 
 # Define the path to the frontend applications
 FRONTEND_DIR := apps/frontend
+BACKEND_DIR := apps/backend
 
 # Automatically find all immediate subdirectories within apps/frontend containing a package.json
 FRONTEND_SUBDIRS := $(shell find $(FRONTEND_DIR) -mindepth 1 -maxdepth 1 -type d -exec test -f "{}/package.json" \; -print)
+BACKEND_SUBDIRS := $(shell find $(BACKEND_DIR) -mindepth 1 -maxdepth 1 -type d -exec test -f "{}/requirements.txt" \; -print)
 
 # Alternatively, specify frontend subdirectories manually
 # Uncomment and modify the following line if you prefer to specify subdirectories manually
@@ -21,7 +23,7 @@ FRONTEND_SUBDIRS := $(shell find $(FRONTEND_DIR) -mindepth 1 -maxdepth 1 -type d
 .PHONY: install-env-deps install-pnpm clean-env-deps
 
 
-install-env-deps: check_pnpm install-pnpm
+install-env-deps: check_pnpm install-pnpm install-pip
 
 # ===========================================
 # Check pnpm Installation
@@ -49,6 +51,18 @@ install-pnpm:
 		}; \
 	done
 	@echo "✅ All frontend dependencies installed successfully."
+
+
+install-pip:
+	@echo "🔧 Installing dependencies in all frontend subdirectories with requirements.txt..."
+	@for dir in $(BACKEND_SUBDIRS); do \
+		echo "➡️  Installing in $$dir..."; \
+		(cd $$dir && pip install) || { \
+			echo "❌ Installation failed in $$dir"; \
+			exit 1; \
+		}; \
+	done
+	@echo "✅ All python dependencies installed successfully."
 
 # ===========================================
 # Clean Dependencies Target

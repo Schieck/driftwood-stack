@@ -82,7 +82,7 @@ make docker-run
 - [MongoDB Go Driver](https://www.mongodb.com/docs/drivers/go/current/)
 
 #### ML Service (Python)
-- [FastAPI](https://fastapi.tiangolo.com/) - Modern API framework
+- [gRPC](https://grpc.io/) - Fast Response framework between services
 - [LangChain](https://python.langchain.com/) - LLM framework
 - [scikit-learn](https://scikit-learn.org/) - Machine learning
 - [Pydantic](https://docs.pydantic.dev/) - Data validation

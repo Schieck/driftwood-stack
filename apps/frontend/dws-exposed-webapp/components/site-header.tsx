@@ -4,7 +4,8 @@ import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { PhosphorGithub, PhosphorTwitter } from "./icons"
+import { PhosphorGithub } from "./icons"
+import BuyMeACoffeeButton from "./atom/BuyMeACoffeButton"
 
 export function SiteHeader() {
   return (
@@ -13,6 +14,7 @@ export function SiteHeader() {
         <MainNav items={siteConfig.mainNav} />
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
+          <BuyMeACoffeeButton label="Buy me a Coffe!" />
             <Link
               href={siteConfig.links.github}
               target="_blank"
@@ -26,21 +28,6 @@ export function SiteHeader() {
               >
                 <PhosphorGithub className="size-5" />
                 <span className="sr-only">GitHub</span>
-              </div>
-            </Link>
-            <Link
-              href={siteConfig.links.twitter}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={buttonVariants({
-                  size: "icon",
-                  variant: "ghost",
-                })}
-              >
-                <PhosphorTwitter className="size-5 fill-current" />
-                <span className="sr-only">Twitter</span>
               </div>
             </Link>
             <ThemeToggle />

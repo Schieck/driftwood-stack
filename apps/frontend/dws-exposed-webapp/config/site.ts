@@ -1,9 +1,9 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
+  name: "Driftwood Stack",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "A Powerful stack to create WEB3 Apps fast as hell. Powered by Radix UI and Tailwind CSS.",
   mainNav: [
     {
       title: "Home",
@@ -11,8 +11,7 @@ export const siteConfig = {
     },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    github: "https://github.com/Schieck/driftwood-stack",
+    docs: "https://github.com/Schieck/driftwood-stack",
   },
 }
