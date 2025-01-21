@@ -12,6 +12,8 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
       - PORT=${DWS_EXT_WEBAPP_PORT}
+      - NEXT_PUBLIC_API_PORT=${DWS_GO_PORT}
+      - NEXT_PUBLIC_API_HOST=${DWS_GO_HOST}
 
   dws-internal-webapp:
     build:

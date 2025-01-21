@@ -3,11 +3,9 @@ import clsx from 'clsx';
 
 import { Card } from '@/components/ui/card'; 
 
-// TypeScript interface for props
 interface GridItemProps {
   children: React.ReactNode;
   className?: string;
-  // Define other props as necessary
 }
 
 /**
@@ -26,6 +24,8 @@ const GridItem: React.FC<GridItemProps> = ({ children, className }) => {
     'hover:bg-gray-100', // Hover effect
     'transition-all', // Smooth transition for hover effects
     'duration-300', // Duration for transition effects
+    'place-content-center',
+    'flex',
     className, // Custom class passed through props
   ]);
 

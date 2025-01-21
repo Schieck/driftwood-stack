@@ -1,78 +1,48 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import clsx from "clsx";
-import debounce from "lodash.debounce";
 import { LucideFastFowardIcon } from "../icons";
 
 interface GoInputProps {
+  value: string;
+  onChange: (value: string) => void; // Called on keystroke
+  onSubmit: (value: string) => void; // Called on “Go” click
   placeholder?: string;
-  onSearch: (value: string) => void;
-  debounceTime?: number;
+  isLoading?: boolean;
+  debounceTime?: number; // Not used here if we do it in Hero
 }
 
 /**
- * `GoInput` component represents a molecule-level component
- * featuring a 3D effect input with debounce functionality and a Go button.
- *
- * @component
- * @param {GoInputProps} props - The props for the component.
- * @returns {React.ReactElement} - The rendered element.
- * 
- * @example
- * ```tsx
- * <GoInput
- *   placeholder="Search..."
- *   onSearch={(value) => console.log(value)}
- *   debounceTime={300}
- * />
- * ```
+ * A simple input + “Go” button. 
+ * Debouncing is handled in the parent (HeroSection).
  */
 const GoInput: React.FC<GoInputProps> = ({
-  placeholder = "Search among driftwoods...",
-  onSearch,
-  debounceTime = 300,
+  value,
+  onChange,
+  onSubmit,
+  placeholder = "Search...",
+  isLoading = false,
+  debounceTime = 300, // Default if used
 }) => {
-  const [inputValue, setInputValue] = useState("");
-
-  // Wrap onSearch in debounce
-  const debouncedOnSearch = useCallback(
-    debounce((value: string) => {
-      onSearch(value);
-    }, debounceTime),
-    [onSearch, debounceTime]
-  );
-
-  useEffect(() => {
-    // Trigger debounced search on inputValue change
-    debouncedOnSearch(inputValue);
-
-    // Cleanup debounce on unmount
-    return () => {
-      debouncedOnSearch.cancel();
-    };
-  }, [inputValue, debouncedOnSearch]);
-
   return (
     <div className="flex gap-3">
       <Input
         type="text"
         placeholder={placeholder}
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        aria-label={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        // No disabling on typing, to let user finish
+        disabled={false}
       />
       <Button
-        onClick={() => onSearch(inputValue)}
-        className={clsx(
-          "px-4 bg-primary hover:bg-primary rounded-md shadow-md transition duration-300 ease-in-out",
-          "flex items-center justify-center"
-        )}
-        aria-label="Submit Search"
+        onClick={() => onSubmit(value)}
+        className={clsx("flex items-center justify-center px-4")}
+        disabled={isLoading}
       >
-        <LucideFastFowardIcon />
+        {isLoading ? "Loading..." : <LucideFastFowardIcon />}
       </Button>
     </div>
   );

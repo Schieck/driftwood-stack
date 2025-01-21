@@ -56,7 +56,7 @@ func (s *service) SearchDriftwood(query string, filters map[string]string, inclu
 		IncludeRecommendations: includeRecommendations,
 	}
 
-	response, err := await s.client.SearchDriftwood(ctx, request)
+	response, err := s.client.SearchDriftwood(ctx, request)
 	if err != nil {
 		log.Printf("Error calling SearchDriftwood: %v", err)
 		return nil, err
