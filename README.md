@@ -9,7 +9,7 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 
-A production-ready, developer-friendly monorepo stack designed for rapid development of AI-powered web applications. Perfect for POCs, MVPs, and AI Micro-SaaS projects.
+A production-ready, developer-friendly monorepo stack designed for rapid development of AI-powered web applications. Perfect for POCs, MVPs, and AI Micro-SaaS projects. A blue-print solution tought for the market and real-world problem-solving.
 
 ## 🌟 Key Features
 
@@ -17,13 +17,13 @@ A production-ready, developer-friendly monorepo stack designed for rapid develop
 - **AI/ML Ready**: Integrated with LangChain and scikit-learn for rapid AI development
 - **Dual Frontend**: Customer-facing Next.js app + Internal admin panel
 - **High Performance**: gRPC communication between services
-- **Web3 Compatible**: Ready for blockchain integration
+- **Web3 Compatible**: A Stack ready for blockchain integration
 - **Developer Experience**: Automated code generation and comprehensive tooling
 
 ## 📊 Status
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/yourusername/driftwood-stack/actions)
-[![Documentation Status](https://img.shields.io/badge/docs-latest-blue)](https://github.com/yourusername/driftwood-stack/wiki)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/Schieck/driftwood-stack/actions)
+[![Documentation Status](https://img.shields.io/badge/docs-latest-blue)](https://github.com/Schieck/driftwood-stack/wiki)
 ![Project Status](https://img.shields.io/badge/status-alpha-orange)
 
 ## 🎯 Perfect For
@@ -40,10 +40,10 @@ A production-ready, developer-friendly monorepo stack designed for rapid develop
 - [x] Basic Frontend Setup
 - [x] Makefile to rename for the new entire project
 - [x] Finish first version of the component generator
+- [x] Implemented completely functional frontend and backend using all the tools
+- [ ] Implement the backdoor front-end and improve quality of the search
 - [ ] Adjust prompts for better results
 - [ ] Implement CI/CD with artifacts ready for deploy
-- [ ] Implemented completely functional frontend and backend using all the tools
-
 
 ## 🚀 Quick Start
 

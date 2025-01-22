@@ -14,7 +14,7 @@ class FilterService:
 
     def update_filter_values(self):
         """
-        Update MongoDB with unique filter values from the dataset.
+        We need to update our database with unique filter values from the dataset time to time, this is the function to do so.
         """
         logger.info("Updating filter values from dataset.")
         df = pd.read_csv(settings.DATASET_PATH)
@@ -34,7 +34,7 @@ class FilterService:
 
     def get_filter_values(self):
         """
-        Fetch the possible filter values from MongoDB.
+        We need to fetch the possible filter values from the database for a better ML response.
         """
         logger.info("Fetching filter values from MongoDB.")
         filters = {}

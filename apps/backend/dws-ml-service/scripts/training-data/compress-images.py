@@ -1,6 +1,8 @@
 import os
 from PIL import Image
 
+directory = "./generated_images"
+
 def compress_images(directory, quality=85):
     if not os.path.exists(directory):
         print(f"Error: Directory '{directory}' does not exist.")
@@ -20,9 +22,4 @@ def compress_images(directory, quality=85):
             except Exception as e:
                 print(f"Skipping file '{file}': {e}")
 
-
-# Directory containing the images
-directory = "./generated_images"
-
-# Compress images with quality level 85
 compress_images(directory, quality=85)

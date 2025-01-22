@@ -25,7 +25,6 @@ var (
 	port = os.Getenv("DB_PORT")
 	username = os.Getenv("DB_USERNAME")
 	password = os.Getenv("DB_PASSWORD")
-	//database = os.Getenv("DB_DATABASE")
 )
 
 func New() Service {

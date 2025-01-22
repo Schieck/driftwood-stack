@@ -9,9 +9,6 @@ class MongoDBConnection:
         self.db = None
 
     def connect(self):
-        """
-        Establish a connection to the MongoDB instance.
-        """
         try:
             logger.info("Connecting to MongoDB...")
             self.client = MongoClient(
@@ -27,18 +24,12 @@ class MongoDBConnection:
             raise e
 
     def get_collection(self, collection_name):
-        """
-        Get a specific collection from the database.
-        """
         if self.db is None:  # Explicitly check if self.db is None
             logger.error("Database connection not established.")
             raise Exception("Database connection not established.")
         return self.db[collection_name]
 
     def close(self):
-        """
-        Close the database connection.
-        """
         if self.client:
             logger.info("Closing MongoDB connection.")
             self.client.close()

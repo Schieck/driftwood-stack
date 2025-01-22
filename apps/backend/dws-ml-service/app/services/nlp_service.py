@@ -1,7 +1,6 @@
 from langchain.prompts import PromptTemplate
 from transformers import pipeline
 from loguru import logger
-import json
 from typing import Dict, Any
 from app.services.filter_service import FilterService
 
@@ -9,7 +8,7 @@ from app.services.filter_service import FilterService
 class NLPService:
     def __init__(self, model_id: str = "facebook/bart-large-mnli"):
         """
-        Initializes the NLPService with a zero-shot classification model.
+        We need to setup the NLPService with a zero-shot classification model to search the filters.
         """
         try:
             logger.info(f"Initializing NLPService with model: {model_id}")
@@ -26,25 +25,20 @@ class NLPService:
 
     def parse_query(self, query: str) -> Dict[str, Any]:
         """
-        Parses a natural language query into structured filters.
+        We need to parse a natural language query into structured filters.
         """
-        try:
-            # Get filter values dynamically from the FilterService
+        try:            
             filter_values = self.filter_service.get_filter_values()
             
-            # Prepare classification results
             filters = {key: None for key in filter_values.keys()}
-            
-            # Iterate through each classification category
+                        
             for category, possible_values in filter_values.items():
-                # Perform classification for the current category
                 result = self.classifier(query, possible_values, multi_label=True)
                 
-                # Find the best match with a confidence threshold
                 for label, score in zip(result["labels"], result["scores"]):
-                    if score > 0.5:  # Adjust threshold as needed
+                    if score > 0.35:
                         filters[category] = label
-                        break  # Use the first match above the threshold
+                        break 
             
             return filters
             
@@ -56,11 +50,3 @@ class NLPService:
 class InitializationError(Exception):
     """Raised when NLPService initialization fails"""
     pass
-
-
-# Example Usage
-if __name__ == "__main__":
-    nlp_service = NLPService()
-    query = "I need a rough, dark brown driftwood log from a rocky ocean."
-    filters = nlp_service.parse_query(query)
-    print(filters)

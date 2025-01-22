@@ -48,11 +48,11 @@ interface SearchBarProps {
   maxRecentSearches?: number;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({
+export const SearchBar = ({
   onSearch,
   placeholder = "Search...",
   maxRecentSearches = 5
-}) => {
+}: SearchBarProps) => {
   const [query, setQuery] = useState<string>("");
   const [open, setOpen] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
@@ -136,7 +136,7 @@ interface MetricCardProps {
   icon: React.ReactNode;
 }
 
-const MetricCard: React.FC<MetricCardProps> = ({ title, value, change, icon }) => (
+const MetricCard = ({ title, value, change, icon }: MetricCardProps) => (
   <Card>
     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
       <CardTitle className="text-sm font-medium">{title}</CardTitle>
@@ -167,7 +167,7 @@ interface AnalyticsDashboardProps {
   }
 }
 
-export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ data }) => {
+export const AnalyticsDashboard = ({ data }: AnalyticsDashboardProps) => {
   const defaultData = {
     metrics: {
       users: 1234,

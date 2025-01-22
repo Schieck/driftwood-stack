@@ -6,7 +6,6 @@ import pandas as pd
 
 class SearchService:
     def __init__(self, dataset_path=None):
-        # Use the dataset path from settings if not explicitly provided
         self.dataset_path = dataset_path or settings.DATASET_PATH
         self.dataset = pd.read_csv(self.dataset_path)
         self.nlp_service = NLPService()

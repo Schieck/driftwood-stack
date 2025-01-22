@@ -1,6 +1,6 @@
 # Project dws-api-gateway
 
-One Paragraph of project description goes here
+Basic implementation of a Go API Gateway that integrate with gRPC (ML Python Service)
 
 ## Getting Started
 

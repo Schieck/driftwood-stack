@@ -8,12 +8,10 @@ interface BuyMeACoffeeButtonProps {
 
 /**
  * `BuyMeACoffeeButton` renders a styled button that links to the specified BuyMeACoffee page.
- * It's designed to be reusable, accessible, and follows the atomic design principles.
  *
- * @param BuyMeACoffeeButtonProps - The props for configuring the button.
- * @returns A React element.
+ * @param {BuyMeACoffeeButtonProps} - The props for configuring the button.
  */
-const BuyMeACoffeeButton: React.FC<BuyMeACoffeeButtonProps> = ({ label = 'Support the project!' }) => {
+const BuyMeACoffeeButton = ({ label = 'Support the project!' }: BuyMeACoffeeButtonProps) => {
   return (
     <a
       href="https://www.buymeacoffee.com/schieck"

@@ -10,23 +10,21 @@ interface GridItemProps {
 
 /**
  * GridItem component designed to be used within a Grid system.
- * Uses Tailwind CSS for styling to ensure responsiveness and maintainability.
+ *
  * @param {GridItemProps} props The properties for the GridItem component.
- * @returns {JSX.Element} The rendered GridItem component.
  */
-const GridItem: React.FC<GridItemProps> = ({ children, className }) => {
-  // Use clsx for conditional class names
+const GridItem = ({ children, className }: GridItemProps) => {
   const gridItemClasses = clsx([
-    'p-4', // Padding
-    'border', // Border
-    'rounded-lg', // Rounded corners
-    'shadow-md', // Shadow for depth
-    'hover:bg-gray-100', // Hover effect
-    'transition-all', // Smooth transition for hover effects
-    'duration-300', // Duration for transition effects
+    'p-4',
+    'border',
+    'rounded-lg',
+    'shadow-md',
+    'hover:bg-gray-100',
+    'transition-all',
+    'duration-300',
     'place-content-center',
     'flex',
-    className, // Custom class passed through props
+    className,
   ]);
 
   return (

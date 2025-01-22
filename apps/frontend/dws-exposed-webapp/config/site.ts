@@ -6,8 +6,8 @@ export const siteConfig = {
     "A Powerful stack to create WEB3 Apps fast as hell. Powered by Radix UI and Tailwind CSS.",
   mainNav: [
     {
-      title: "Home",
-      href: "/",
+      title: "Docs",
+      href: "https://github.com/Schieck/driftwood-stack",
     },
   ],
   links: {

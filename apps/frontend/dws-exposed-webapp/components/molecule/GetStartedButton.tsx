@@ -1,18 +1,19 @@
 import React from 'react';
-import { Button } from '@/components/ui/button'; // Ensure to have this component by running: npx shadcn add button
+import { Button } from '@/components/ui/button';
 import { PhosphorStar } from '../icons';
 
 interface GetStartedButtonProps {
     handleClick?: () => {};
 }
 
+
 /**
  * `GetStartedButton` is a UI component for navigating users to get started with the Driftwood Stack project.
- * It leverages Tailwind CSS for styling and shadcn's Button component for consistent UI.
  *
- * Use this component on the main page as a call-to-action for users to begin their journey.
+ * @param {GetStartedButtonProps} props The properties for the GetStartedButtonProps component.
  */
-const GetStartedButton: React.FC<GetStartedButtonProps> = (handleClick?) => {
+
+const GetStartedButton= (handleClick?: GetStartedButtonProps) => {
     return (
         <Button
             variant='outline'

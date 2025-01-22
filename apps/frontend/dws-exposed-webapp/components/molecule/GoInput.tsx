@@ -8,25 +8,25 @@ import { LucideFastFowardIcon } from "../icons";
 
 interface GoInputProps {
   value: string;
-  onChange: (value: string) => void; // Called on keystroke
-  onSubmit: (value: string) => void; // Called on “Go” click
+  onChange: (value: string) => void;
+  onSubmit: (value: string) => void;
   placeholder?: string;
   isLoading?: boolean;
-  debounceTime?: number; // Not used here if we do it in Hero
 }
 
+
 /**
- * A simple input + “Go” button. 
- * Debouncing is handled in the parent (HeroSection).
+ * GoInput is a simple input + “Go” button.
+ * 
+ * @param {GoInputProps} props The properties for the GoInput component.
  */
-const GoInput: React.FC<GoInputProps> = ({
+const GoInput = ({
   value,
   onChange,
   onSubmit,
   placeholder = "Search...",
-  isLoading = false,
-  debounceTime = 300, // Default if used
-}) => {
+  isLoading = false
+}: GoInputProps) => {
   return (
     <div className="flex gap-3">
       <Input
@@ -34,7 +34,6 @@ const GoInput: React.FC<GoInputProps> = ({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        // No disabling on typing, to let user finish
         disabled={false}
       />
       <Button
@@ -42,7 +41,7 @@ const GoInput: React.FC<GoInputProps> = ({
         className={clsx("flex items-center justify-center px-4")}
         disabled={isLoading}
       >
-        {isLoading ? "Loading..." : <LucideFastFowardIcon />}
+        {isLoading ? "Loading..." : (<LucideFastFowardIcon />)}
       </Button>
     </div>
   );

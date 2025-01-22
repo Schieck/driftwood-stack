@@ -17,19 +17,16 @@ interface DriftwoodGridSectionProps {
 }
 
 /**
- * DriftwoodGridSection displays a responsive grid of driftwood items.
+ * The Grid Section to showcase the driftwood images from the search.
+ * 
+ * @param {DriftwoodGridSectionProps} props The properties for the DriftwoodGridSection component.
  */
-const DriftwoodGridSection: React.FC<DriftwoodGridSectionProps> = ({
+const DriftwoodGridSection = ({
   data,
-  loading,
-  error,
-  totalItems,
-  itemsPerPage,
-  currentPage,
-  onPageChange,
-}) => {
-  if (error) {
-    return <div className="text-center text-destructive">{error}</div>;
+  ...rest
+}: DriftwoodGridSectionProps) => {
+  if (rest.error) {
+    return <div className="text-center text-destructive">{rest.error}</div>;
   }
 
   return (
@@ -42,8 +39,8 @@ const DriftwoodGridSection: React.FC<DriftwoodGridSectionProps> = ({
           className={`grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4
                       bg-muted p-4 dark:bg-accent`}
         >
-          {loading
-            ? Array.from({ length: itemsPerPage }).map((_, index) => (
+          {rest.loading
+            ? Array.from({ length: rest.itemsPerPage }).map((_, index) => (
                 <GridItem key={index}>
                   <Skeleton className="size-32 rounded-md" />
                 </GridItem>
@@ -54,8 +51,8 @@ const DriftwoodGridSection: React.FC<DriftwoodGridSectionProps> = ({
                     alt="A Driftwood"
                     className="rounded-md"
                     src={"/" + item.image_path}
-                    width={100}
-                    height={100}
+                    width={200}
+                    height={200}
                   />
                 </GridItem>
               ))}

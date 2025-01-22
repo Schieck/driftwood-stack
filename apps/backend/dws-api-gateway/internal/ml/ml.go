@@ -45,7 +45,6 @@ func New() Service {
 	}
 }
 
-// SearchDriftwood sends a search request to the ML-Service
 func (s *service) SearchDriftwood(query string, filters map[string]string, includeRecommendations bool) (*pb.SearchResponse, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
@@ -65,7 +64,6 @@ func (s *service) SearchDriftwood(query string, filters map[string]string, inclu
 	return response, nil
 }
 
-// Health checks the connectivity to the gRPC server
 func (s *service) Health() map[string]string {
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
@@ -79,7 +77,6 @@ func (s *service) Health() map[string]string {
 	return map[string]string{"status": "healthy", "message": "ML-Service is reachable"}
 }
 
-// Close closes the gRPC connection
 func (s *service) Close() error {
 	log.Println("Closing gRPC connection to ML-Service.")
 	return s.conn.Close()

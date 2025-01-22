@@ -4,7 +4,6 @@ from loguru import logger
 
 class Settings(BaseSettings):
     # API Settings
-    API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "Driftwood Search API"
 
     # Model Settings

@@ -1,9 +1,14 @@
 from app.services.nlp_service import NLPService
 
 def test_nlp_service():
+    # Arrange
     nlp_service = NLPService()
     query = "Find a rough brown log driftwood on a sunny sandy beach"
+
+    # Act
     filters = nlp_service.parse_query(query)
+
+    # Assert
     print("Parsed Filters:", filters)
     assert "texture" in filters
     assert filters["texture"] == "rough"

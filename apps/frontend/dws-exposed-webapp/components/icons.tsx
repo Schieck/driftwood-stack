@@ -25,7 +25,7 @@ import DriftWoodLogoB from "@/public/driftwood-black.svg"
 type CombinedIconProps = PhosphorIconProps & LucideProps
 
 const Logo = ({ theme }: { theme: string | undefined }) => {
-  // Force React to re-render when theme changes
+  // We need to force React to re-render when theme changes
   const [currentTheme, setCurrentTheme] = React.useState(theme)
   
   React.useEffect(() => {
@@ -55,11 +55,13 @@ const GitHubCustom = (props: CombinedIconProps) => (
 export {
   GitHubCustom,
   Logo,
+  
   // Lucide Icons
   LucideSunMedium,
   LucideMoon, 
   LucideTwitter,
   LucideFastFowardIcon,
+
   // Phosphor Icons  
   PhosphorSun,
   PhosphorMoon,

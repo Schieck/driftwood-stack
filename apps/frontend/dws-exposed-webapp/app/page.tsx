@@ -15,57 +15,38 @@ export default function IndexPage() {
     rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
   };
 
-  // Data states
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Optional pagination
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalItems, setTotalItems] = useState<number>(0);
   const ITEMS_PER_PAGE = 12;
 
-  // Current search query
-  const [searchQuery, setSearchQuery] = useState<string>("log"); // Default
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  /**
-   * Fetch driftwood data from the backend
-   */
   const fetchData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      // If your API supports offset/limit:
-      // const offset = (currentPage - 1) * ITEMS_PER_PAGE;
-      // const response = await apiService.searchDriftwood(searchQuery, { offset, limit: ITEMS_PER_PAGE });
-
       const response = await apiService.searchDriftwood(searchQuery);
       setData(response.results || []);
-      // setTotalItems(response.total || 0);
     } catch (err) {
       setError("Failed to load data. Please try again.");
     } finally {
       setLoading(false);
     }
-  }, [searchQuery /*, currentPage */]);
+  }, [searchQuery]);
 
-  // Trigger data fetch on mount and whenever searchQuery changes
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  // Search callback (invoked by the HeroSection's GoInput)
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    setCurrentPage(1); // Reset to page 1 if you have pagination
+    setCurrentPage(1);
   };
 
-  // “Get Started” callback
-  const handleGetStarted = () => {
-    window.location.href = "/docs";
-  };
-
-  // Page change callback (if using pagination)
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -75,10 +56,10 @@ export default function IndexPage() {
       <HeroSection
         lottieOptions={heroLottie}
         title="Dominate Your Workflow"
-        description="Unleash the power of Driftwood Stack to craft AI-powered MVPs, POCs, and Micro-SaaS apps faster than your competitors can say 'deployment.' Your secret weapon for innovation starts here."
+        description="Unleash the power of open-source with Driftwood Stack. To craft AI-powered MVPs, POCs, Micro-SaaS, web3, and anything; faster than your competitors can say 'deployment.'"
+        subDescription="Your secret weapon for innovation starts here."
         onSearch={handleSearch}
-        onGetStarted={handleGetStarted}
-        isLoading={loading} // for optional UI feedback
+        isLoading={loading}
       />
 
       <DriftwoodGridSection
