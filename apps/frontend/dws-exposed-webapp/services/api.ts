@@ -2,7 +2,7 @@ import { SearchResponse } from "@/types/api"
 
 export type SearchFilters = Record<string, string>
 
-const API_BASE_URL = `http://localhost:${process.env.NEXT_PUBLIC_API_PORT}`
+const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_HOST_PREFIX}${process.env.NEXT_PUBLIC_API_HOST}:${process.env.NEXT_PUBLIC_API_PORT}`
 
 const request = async <T>(
   url: string,
@@ -32,7 +32,7 @@ export const apiService = {
     filters: SearchFilters = {},
     includeRecommendations = false
   ): Promise<SearchResponse> =>
-    request<SearchResponse>("/search", {
+    request<SearchResponse>("/ml/search", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,38 +1,15 @@
 package server
 
 import (
-	_ "dws-api-gateway/cmd/api/docs"
+    "net/http"
 
-	"net/http"
+    "github.com/gin-contrib/cors"
+    "github.com/gin-gonic/gin"
+    swaggerFiles "github.com/swaggo/files"
+    ginSwagger "github.com/swaggo/gin-swagger"
 
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
-
-	swaggerFiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
+    "dws-api-gateway/internal/server/handlers"
 )
-
-func (s *Server) RegisterRoutes() http.Handler {
-	r := gin.Default()
-
-	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3030", "http://localhost:5173"},
-        AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-        AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
-        ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true, 
-	}))
-
-	r.GET("/", s.HelloWorldHandler)
-
-	r.GET("/health", s.healthHandler)
-
-	r.POST("/search", s.searchHandler)
-
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
-	return r
-}
 
 func (s *Server) HelloWorldHandler(c *gin.Context) {
 	resp := make(map[string]string)
@@ -48,23 +25,38 @@ func (s *Server) healthHandler(c *gin.Context) {
 	})
 }
 
-func (s *Server) searchHandler(c *gin.Context) {
-		var request struct {
-			Query                string            `json:"query"`
-			Filters              map[string]string `json:"filters"`
-			IncludeRecommendations bool             `json:"include_recommendations"`
-		}
+func (s *Server) RegisterRoutes() http.Handler {
+    r := gin.Default()
 
-		if err := c.ShouldBindJSON(&request); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			return
-		}
+    r.Use(cors.New(cors.Config{
+        AllowOrigins:     []string{"http://localhost:3030", "http://localhost:3031"},
+        AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+        AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+        ExposeHeaders:    []string{"Content-Length"},
+        AllowCredentials: true,
+    }))
+	
+    r.GET("/", s.HelloWorldHandler) 
+    r.GET("/health", s.healthHandler)
 
-		response, err := s.ml.SearchDriftwood(request.Query, request.Filters, request.IncludeRecommendations)
-		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch results", "details": err.Error()})
-			return
-		}
+    r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-		c.JSON(http.StatusOK, response)
+	mlHandler := handlers.NewMlHandler(s.ml)
+	ml := r.Group("/ml")
+	{
+    	ml.POST("/search", mlHandler.SearchHandler)
+	}
+
+    filterHandler := handlers.NewFilterHandler(s.filter)
+    filters := r.Group("/filters")
+    {
+		filters.GET("/updater-config", filterHandler.GetUpdaterConfiguration)
+		filters.PUT("/updater-config", filterHandler.UpdateUpdaterConfiguration)
+
+		filters.GET("", filterHandler.GetFilters)
+		filters.PUT("/:id", filterHandler.UpdateFilter)
+		filters.DELETE("/:id", filterHandler.DeleteFilter)
+    }
+
+    return r
 }

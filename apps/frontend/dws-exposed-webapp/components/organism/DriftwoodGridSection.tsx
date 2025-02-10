@@ -31,10 +31,10 @@ const DriftwoodGridSection = ({
 
   return (
     <section
-      className="flex justify-center px-6 text-center sm:h-screen sm:px-20"
+      className="flex w-full justify-center px-6 text-center sm:h-screen sm:px-20"
       aria-label="Driftwood Grid Section"
     >
-      <div className="w-full grid-cols-4 items-center sm:-mt-36">
+      <div className="w-full grid-cols-4 items-center">
         <div
           className={`grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4
                       bg-muted p-4 dark:bg-accent`}

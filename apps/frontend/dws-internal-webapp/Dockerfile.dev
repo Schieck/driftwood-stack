@@ -18,4 +18,4 @@ COPY * .
 EXPOSE ${DWS_INT_WEBAPP_PORT}
 
 # # Start the Vite development server
-CMD ["npm", "run", "dev"]
+CMD ["pnpm", "run", "dev"]

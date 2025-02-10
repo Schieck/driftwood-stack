@@ -14,4 +14,5 @@ export const siteConfig = {
     github: "https://github.com/Schieck/driftwood-stack",
     docs: "https://github.com/Schieck/driftwood-stack",
   },
+  lang: "en",
 }

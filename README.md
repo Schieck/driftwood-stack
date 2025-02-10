@@ -41,8 +41,8 @@ A production-ready, developer-friendly monorepo stack designed for rapid develop
 - [x] Makefile to rename for the new entire project
 - [x] Finish first version of the component generator
 - [x] Implemented completely functional frontend and backend using all the tools
-- [ ] Implement the backdoor front-end and improve quality of the search
-- [ ] Adjust prompts for better results
+- [x] Implement the backdoor front-end and improve quality of the search
+- [ ] Adjust component generation prompts for better results
 - [ ] Implement CI/CD with artifacts ready for deploy
 
 ## 🚀 Quick Start

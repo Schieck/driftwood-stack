@@ -1,30 +1,28 @@
-package ml
+package services
 
 import (
-	"context"
-	"log"
-	"fmt"
-	"time"
-	"os"
+    "context"
+    "fmt"
+    "log"
+    "os"
+    "time"
 
-	_ "github.com/joho/godotenv/autoload"
-
-	pb "dws-api-gateway/proto"
-	"google.golang.org/grpc"
+    pb "dws-api-gateway/proto"
+    "google.golang.org/grpc"
 )
 
-type Service interface {
-	SearchDriftwood(query string, filters map[string]string, includeRecommendations bool) (*pb.SearchResponse, error)
-	Health() map[string]string
-	Close() error
+type MlService interface {
+    SearchDriftwood(query string, filters map[string]string, includeRecommendations bool) (*pb.SearchResponse, error)
+    Health() map[string]string
+    Close() error
 }
 
-type service struct {
-	client pb.DriftwoodSearchServiceClient
-	conn   *grpc.ClientConn
+type mlService struct {
+    client pb.DriftwoodSearchServiceClient
+    conn   *grpc.ClientConn
 }
 
-func New() Service {
+func NewMlService() MlService {
 	grpcAddress := fmt.Sprintf("%s:%s", os.Getenv("ML_HOST"), os.Getenv("ML_PORT"))
 	log.Printf("Connecting to ML gRPC Service at %s...\n", grpcAddress)
 
@@ -39,13 +37,13 @@ func New() Service {
 	client := pb.NewDriftwoodSearchServiceClient(conn)
 	log.Println("Connected to gRPC ML-Service at", grpcAddress)
 
-	return &service{
+	return &mlService{
 		client: client,
 		conn:   conn,
 	}
 }
 
-func (s *service) SearchDriftwood(query string, filters map[string]string, includeRecommendations bool) (*pb.SearchResponse, error) {
+func (s *mlService) SearchDriftwood(query string, filters map[string]string, includeRecommendations bool) (*pb.SearchResponse, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
 
@@ -64,7 +62,7 @@ func (s *service) SearchDriftwood(query string, filters map[string]string, inclu
 	return response, nil
 }
 
-func (s *service) Health() map[string]string {
+func (s *mlService) Health() map[string]string {
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 
@@ -77,7 +75,7 @@ func (s *service) Health() map[string]string {
 	return map[string]string{"status": "healthy", "message": "ML-Service is reachable"}
 }
 
-func (s *service) Close() error {
+func (s *mlService) Close() error {
 	log.Println("Closing gRPC connection to ML-Service.")
 	return s.conn.Close()
 }
