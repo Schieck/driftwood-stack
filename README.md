@@ -6,7 +6,6 @@
 [![Next.js](https://img.shields.io/badge/Next.js-black?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=flat&logo=go&logoColor=white)](https://golang.org/)
 [![Python](https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 
 A production-ready, developer-friendly monorepo stack designed for rapid development of AI-powered web applications. Perfect for POCs, MVPs, and AI Micro-SaaS projects. A blue-print solution tought for the market and real-world problem-solving.
@@ -42,8 +41,10 @@ A production-ready, developer-friendly monorepo stack designed for rapid develop
 - [x] Finish first version of the component generator
 - [x] Implemented completely functional frontend and backend using all the tools
 - [x] Implement the backdoor front-end and improve quality of the search
+- [x] Add test cases for all projects
 - [ ] Adjust component generation prompts for better results
 - [ ] Implement CI/CD with artifacts ready for deploy
+- [ ] Refine the Wiki, Dev Guide, Api and Contributing of the project
 
 ## 🚀 Quick Start
 
@@ -146,9 +147,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📚 Documentation
 
-- [Full Documentation](https://github.com/yourusername/driftwood-stack/wiki)
-- [API Reference](https://github.com/yourusername/driftwood-stack/wiki/api)
-- [Development Guide](https://github.com/yourusername/driftwood-stack/wiki/development)
+- [Full Documentation](https://github.com/Schieck/driftwood-stack/wiki)
+- [API Reference](https://github.com/Schieck/driftwood-stack/wiki/api)
+- [Development Guide](https://github.com/Schieck/driftwood-stack/wiki/development)
 
 ## ⭐ Support
 
@@ -160,5 +161,4 @@ If you find this project helpful, please consider giving it a star!
 
 - [Next.js](https://nextjs.org/) team for the amazing framework
 - [shadcn/ui](https://shadcn.dev/) for beautiful components
-- [FastAPI](https://fastapi.tiangolo.com/) team for the Python framework
-- All our [contributors](https://github.com/yourusername/driftwood-stack/graphs/contributors)
+- All our [contributors](https://github.com/Schieck/driftwood-stack/graphs/contributors)

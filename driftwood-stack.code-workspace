@@ -34,7 +34,8 @@
       "**/dist": true,
       "**/.next": true,
       "**/coverage": true
-    }
+    },
+    "typescript.tsdk": "🌐 External Web (Next.js)/node_modules/typescript/lib"
   },
   "extensions": {
     "recommendations": [
